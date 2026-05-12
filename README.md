@@ -20,11 +20,11 @@ What the supporting documentation looks like, how many pages it has, and how it 
 
 ---
 
-## What you will receive
+## What you need
 
-- `openapi.yaml` — the full API specification
-- Live API base URL: `https://test-writechoice.onrender.com/`
-- API key: `tf-live-4a8f2c1e9b3d7e6a`
+- `openapi.yaml`: the full API specification available in this repository
+- Live API base URL: `https://test-writechoice.onrender.com/` use this to test the API
+- API key: `tf-live-4a8f2c1e9b3d7e6a` use this to test the API
 
 > **Important:** The API may take up to 60 seconds to respond on the first request if it has been idle. This is expected behavior.
 
@@ -32,7 +32,7 @@ What the supporting documentation looks like, how many pages it has, and how it 
 
 ## How to authenticate
 
-All requests require the following header:
+All requests to the API require the following header:
 
 ```
 Authorization: Bearer tf-live-4a8f2c1e9b3d7e6a
