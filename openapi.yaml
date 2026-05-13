@@ -1,15 +1,10 @@
 openapi: 3.1.0
 
 info:
-  title: TaskFlow API
+  title: Error Documentation  TaskFlow API
   version: 1.0.0
   description: >
-    TaskFlow is a simple task management API that allows you to create projects,
-    manage tasks within those projects, update task statuses, and delete tasks.
-
-    **Important:** Most operations depend on each other. You must create a project
-    before creating tasks, and you must create a task before updating or deleting it.
-    Follow the workflow described in the guides to use the API correctly.
+    The TaskFlow API returns standardized responses to indicate authentication failures, data validation issues, missing resources, and other error situations.
 
 servers:
   - url: https://test-writechoice.onrender.com/
