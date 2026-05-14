@@ -22,14 +22,15 @@ Invalid status
 Malformed JSON
 
 ```
-## Example  Missing required field
+ Example  Missing required field
 "error": "Bad Request",
   "message": "The 'name' field is required and must be a non-empty string."
   
-## Example — Invalid status
+ Example — Invalid status
   "error": "Bad Request",
   "message": "Invalid status 'completed'. Allowed values are: pending, in_progress, done."
-## How to resolve
+
+ How to resolve
 Check the required fields. Confirm the data types submitted. Use only the allowed values:
 pending
 in_progress
@@ -47,7 +48,7 @@ How to solve this:
 Add the header correctly:
 Authorization: Bearer tf-live-4a8f2c1e9b3d7e6a
 ```
-## 404   Not Found
+ 404   Not Found
 The requested resource was not found.
 
 This can happen when:
@@ -88,7 +89,7 @@ pending 			Task not yet started
 in_progress 	Task in progress
 done 			  	Task completed
 ```
-## Summary of errors
+ Summary of errors
 Code		 Name			 	Reason
 400 		Bad Request			 Invalid or missing data
 401 		Unauthorized 			API Key missing or invalid
