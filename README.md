@@ -7,70 +7,91 @@ All errors follow the format:
 "message": "Detailed description of the problem"
 }
 
-## Overview
+## Authentication
 
-Your task is to create public-facing documentation for **TaskFlow**, a simple task management API.
-
-You will receive an OpenAPI spec file (`openapi.yaml`) and access to a live API. Your job is to turn these into clear, well-structured, and published documentation using **Mintlify**.
-
-There is no single correct answer for how the documentation should be structured. Part of what we are evaluating is how you think about what a reader needs — and how far you take the work.
+YoAll requests require a valid Bearer token in the header:
+Authorization: Bearer tf-live-4a8f2c1e9b3d7e6a
 
 ---
 
-## What you need to produce
-
-- A **Mintlify documentation project**, set up from scratch and deployed as a live public URL
-- **API Reference** pages for all endpoints, based on the provided OpenAPI spec
-- **Supporting documentation** — beyond the endpoint reference itself
-
-What the supporting documentation looks like, how many pages it has, and how it is organized is up to you.
-
----
-
-## What you need
-
-- `openapi.yaml`: the full API specification available in this repository
-- Live API base URL: `https://test-writechoice.onrender.com/` use this to test the API
-- API key: `tf-live-4a8f2c1e9b3d7e6a` use this to test the API
-
-> **Important:** The API may take up to 60 seconds to respond on the first request if it has been idle. This is expected behavior.
-
----
-
-## How to authenticate
-
-All requests to the API require the following header:
+## Error Codes 400   Bad Request
+The server could not process the request due to invalid or missing data.
+Possible causes: Missing required field
+Invalid value
+Invalid status
+Malformed JSON
 
 ```
+## Example  Missing required field
+"error": "Bad Request",
+  "message": "The 'name' field is required and must be a non-empty string."
+  
+## Example — Invalid status
+  "error": "Bad Request",
+  "message": "Invalid status 'completed'. Allowed values are: pending, in_progress, done."
+## How to resolve
+Check the required fields. Confirm the data types submitted. Use only the allowed values:
+pending
+in_progress
+done
+```
+## 401  Unauthorized
+This occurs when the API key is missing or invalid.
+
+Example
+{
+  "error": "Unauthorized",
+  "message": "Missing or invalid API key. Provide a valid key in the Authorization header as: Bearer <api_key>"
+How to solve this:
+
+Add the header correctly:
 Authorization: Bearer tf-live-4a8f2c1e9b3d7e6a
 ```
+## 404   Not Found
+The requested resource was not found.
 
----
+This can happen when:
 
-## Submission
+Updating a non-existent task
+Deleting a non-existent task
+Searching for tasks in a non-existent project
+Creating tasks in projects that do not exist
+Example — Project not found
+{
+  "error": "Not Found",
+  "message": "No project found with project_id 'abc123'."
+}
+Example — Task not found
+{
+  "error": "Not Found",
+  "message": "No task found with task_id 'abc123'."
+```
+## Correct workflow to avoid errors
+The API has dependencies between resources. The recommended workflow is:
+1. Create project
+2. Create task within the project
+3. Update task
+4. List tasks
+5. Delete task
+If you try to create tasks without a valid project_id, the API will return a 404 Not Found error.
+Best practices
+Always validate IDs
+```
+## Before updating or deleting tasks:
+confirm that the task_id exists
+confirm that the project_id belongs to the correct project
+```
+## Use valid statuses
+Only these values are accepted:
+Status 				Description
+pending 			Task not yet started
+in_progress 	Task in progress
+done 			  	Task completed
+```
+## Summary of errors
+Code		 Name			 	Reason
+400 		Bad Request			 Invalid or missing data
+401 		Unauthorized 			API Key missing or invalid
+404		 Not Found 			Project or task not found
 
-Send the following two links before the deadline:
 
-1. **Live Mintlify URL** — the published documentation site
-2. **GitHub repository URL** — the source code for your Mintlify project
-
-Along with the links, include a **short written summary** (no specific format or length required) describing:
-
-- The process you followed to complete the task
-- Any decisions you made about structure or content, and why
-- Anything you found challenging or would do differently with more time
-
----
-
-## Deadline
-
-You have **two full days** from the moment you receive this brief.
-
----
-
-## Notes
-
-- Read the OpenAPI spec carefully before you start writing. Test the live endpoints.
-- Mintlify has documentation at [mintlify.com/docs](https://mintlify.com/docs). You will need to create a free account.
-- If you run into a blocker, make a note of it in your summary rather than stopping.
-- There are no restrictions on tools you can use.
