@@ -1,7 +1,7 @@
 openapi: 3.1.0
 
 info:
-  title: TaskFlow API
+  title: error
   version: 1.0.0
   description: >
     TaskFlow is a simple task management API that allows you to create projects,
