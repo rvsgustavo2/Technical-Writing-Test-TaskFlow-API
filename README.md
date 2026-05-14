@@ -1,4 +1,11 @@
 # Error Documentation  TaskFlow API
+The TaskFlow API returns standardized responses to indicate authentication failures, data validation issues, missing resources, and other error situations.
+All errors follow the format:
+{
+"error": "Type of error",
+
+"message": "Detailed description of the problem"
+}
 
 ## Overview
 
