@@ -9,7 +9,7 @@ All errors follow the format:
 
 ## Authentication
 
-YoAll requests require a valid Bearer token in the header:
+All requests require a valid Bearer token in the header:
 Authorization: Bearer tf-live-4a8f2c1e9b3d7e6a
 
 ---
